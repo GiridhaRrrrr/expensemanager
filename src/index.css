@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Financial Dashboard Design System - Professional fintech theme */
+
+@layer base {
+  :root {
+    /* Core Background & Text */
+    --background: 210 11% 96%;
+    --foreground: 215 25% 27%;
+
+    /* Card & Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 27%;
+
+    /* Interactive Elements */
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Primary - Professional Blue */
+    --primary: 214 84% 56%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 214 84% 50%;
+
+    /* Secondary - Soft Gray */
+    --secondary: 210 13% 93%;
+    --secondary-foreground: 215 25% 27%;
+
+    /* Muted Elements */
+    --muted: 210 13% 93%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent - Warm Orange */
+    --accent: 24 100% 64%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Success - Financial Green */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --success-muted: 142 76% 96%;
+
+    /* Warning - Attention Yellow */
+    --warning: 38 92% 50%;
+    --warning-foreground: 215 25% 27%;
+    --warning-muted: 38 92% 95%;
+
+    /* Destructive - Expense Red */
+    --destructive: 348 83% 47%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 214 84% 56%;
+
+    /* Financial App Specific Colors */
+    --income: 142 76% 36%;
+    --expense: 348 83% 47%;
+    --savings: 214 84% 56%;
+    --investment: 262 83% 58%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 50%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 13% 98%));
+    --gradient-dashboard: linear-gradient(180deg, hsl(210 11% 96%), hsl(210 13% 93%));
+
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 hsl(215 25% 27% / 0.05), 0 1px 2px 0 hsl(215 25% 27% / 0.1);
+    --shadow-elevated: 0 4px 6px -1px hsl(215 25% 27% / 0.1), 0 2px 4px -1px hsl(215 25% 27% / 0.06);
+    --shadow-floating: 0 10px 15px -3px hsl(215 25% 27% / 0.1), 0 4px 6px -2px hsl(215 25% 27% / 0.05);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme for finance dashboard */
+    --background: 215 28% 8%;
+    --foreground: 210 40% 96%;
+
+    --card: 215 28% 10%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 215 28% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 214 84% 60%;
+    --primary-foreground: 215 28% 8%;
+    --primary-hover: 214 84% 55%;
+
+    --secondary: 215 28% 15%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 215 28% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 24 100% 68%;
+    --accent-foreground: 215 28% 8%;
+
+    --success: 142 76% 40%;
+    --success-foreground: 215 28% 8%;
+    --success-muted: 142 76% 15%;
+
+    --warning: 38 92% 55%;
+    --warning-foreground: 215 28% 8%;
+    --warning-muted: 38 92% 15%;
+
+    --destructive: 348 83% 52%;
+    --destructive-foreground: 210 40% 96%;
+
+    --border: 215 28% 18%;
+    --input: 215 28% 18%;
+    --ring: 214 84% 60%;
+
+    --income: 142 76% 40%;
+    --expense: 348 83% 52%;
+    --savings: 214 84% 60%;
+    --investment: 262 83% 62%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(214 84% 60%), hsl(214 84% 75%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 40%), hsl(142 76% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(215 28% 10%), hsl(215 28% 12%));
+    --gradient-dashboard: linear-gradient(180deg, hsl(215 28% 8%), hsl(215 28% 10%));
+
+    --shadow-card: 0 1px 3px 0 hsl(0 0% 0% / 0.3), 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-elevated: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -1px hsl(0 0% 0% / 0.2);
+    --shadow-floating: 0 10px 15px -3px hsl(0 0% 0% / 0.4), 0 4px 6px -2px hsl(0 0% 0% / 0.3);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
