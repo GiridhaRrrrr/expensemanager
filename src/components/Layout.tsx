@@ -23,12 +23,11 @@ export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-gradient-dashboard">
       {/* Sidebar */}
-      <aside
+      <div
         className={cn(
-          "fixed z-30 inset-y-0 left-0 w-64 xl:w-72 bg-card border-r border-border shadow-md lg:static lg:translate-x-0 transform transition-transform duration-300 ease-in-out",
-          sidebarOpen ? "translate-x-0" : "-translate-x-full",
+          "bg-card w-64 xl:w-72 shrink-0 border-r border-border shadow-md hidden lg:flex flex-col z-30"
         )}
       >
         <div className="flex items-center justify-between h-16 px-4 lg:px-6 border-b border-border">
@@ -40,17 +39,8 @@ export function Layout() {
               FinanceFlow
             </span>
           </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => setSidebarOpen(false)}
-            className="lg:hidden"
-          >
-            <X className="w-4 h-4" />
-          </Button>
         </div>
 
-        {/* Sidebar Navigation */}
         <nav className="px-3 py-4 lg:px-4">
           <div className="space-y-1">
             {navigation.map((item) => (
@@ -66,7 +56,6 @@ export function Layout() {
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   )
                 }
-                onClick={() => setSidebarOpen(false)}
               >
                 <item.icon className="mr-3 h-5 w-5 lg:h-6 lg:w-6 flex-shrink-0" />
                 {item.name}
@@ -74,11 +63,64 @@ export function Layout() {
             ))}
           </div>
         </nav>
-      </aside>
+      </div>
 
-      {/* Main content */}
-      <div className="flex-1 flex flex-col min-h-screen lg:ml-64 xl:ml-72">
-        {/* Top bar */}
+      {/* Mobile Sidebar */}
+      {sidebarOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-black bg-opacity-50" onClick={() => setSidebarOpen(false)} />
+      )}
+      <div
+        className={cn(
+          "fixed inset-y-0 left-0 z-50 w-64 bg-card border-r border-border shadow-md transform transition-transform duration-300 ease-in-out lg:hidden",
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        )}
+      >
+        <div className="flex items-center justify-between h-16 px-4 border-b border-border">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <DollarSign className="w-4 h-4 text-primary-foreground" />
+            </div>
+            <span className="text-lg font-semibold text-foreground">
+              FinanceFlow
+            </span>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setSidebarOpen(false)}
+          >
+            <X className="w-4 h-4" />
+          </Button>
+        </div>
+
+        <nav className="px-3 py-4">
+          <div className="space-y-1">
+            {navigation.map((item) => (
+              <NavLink
+                key={item.name}
+                to={item.href}
+                end={item.href === '/'}
+                className={({ isActive }) =>
+                  cn(
+                    "group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200",
+                    isActive
+                      ? "bg-gradient-primary text-primary-foreground shadow-elevated"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  )
+                }
+                onClick={() => setSidebarOpen(false)}
+              >
+                <item.icon className="mr-3 h-5 w-5 flex-shrink-0" />
+                {item.name}
+              </NavLink>
+            ))}
+          </div>
+        </nav>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="flex flex-col flex-1 min-h-screen">
+        {/* Top Bar */}
         <header className="sticky top-0 z-20 bg-card/95 backdrop-blur-sm border-b border-border">
           <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
             <Button
@@ -95,7 +137,6 @@ export function Layout() {
           </div>
         </header>
 
-        {/* Page content */}
         <main className="p-4 sm:p-6 lg:p-8 xl:p-10 max-w-7xl mx-auto w-full">
           <Outlet />
         </main>
