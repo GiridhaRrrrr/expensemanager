@@ -23,19 +23,12 @@ export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-dashboard">
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
-      <div
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <aside
         className={cn(
-          "fixed inset-y-0 left-0 z-30 w-64 bg-card shadow-floating transform transition-transform duration-300 ease-in-out",
-          "lg:translate-x-0 lg:static lg:inset-0 lg:w-64 xl:w-72",
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+          "fixed z-30 inset-y-0 left-0 w-64 xl:w-72 bg-card border-r border-border shadow-md lg:static lg:translate-x-0 transform transition-transform duration-300 ease-in-out",
+          sidebarOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
         <div className="flex items-center justify-between h-16 px-4 lg:px-6 border-b border-border">
@@ -57,7 +50,8 @@ export function Layout() {
           </Button>
         </div>
 
-        <nav className="mt-16 px-3 lg:px-4">
+        {/* Sidebar Navigation */}
+        <nav className="px-3 py-4 lg:px-4">
           <div className="space-y-1">
             {navigation.map((item) => (
               <NavLink
@@ -80,10 +74,12 @@ export function Layout() {
             ))}
           </div>
         </nav>
-      </div>
+      </aside>
 
-      <div className="lg:pl-64 xl:pl-72">
-        <div className="sticky top-0 z-40 bg-card/95 backdrop-blur-sm border-b border-border">
+      {/* Main content */}
+      <div className="flex-1 flex flex-col min-h-screen lg:ml-64 xl:ml-72">
+        {/* Top bar */}
+        <header className="sticky top-0 z-20 bg-card/95 backdrop-blur-sm border-b border-border">
           <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
             <Button
               variant="ghost"
@@ -93,17 +89,14 @@ export function Layout() {
             >
               <Menu className="w-5 h-5" />
             </Button>
-
-            <div className="flex items-center gap-4">
-              <div className="text-sm lg:text-base text-muted-foreground hidden sm:block">
-                Welcome back! Track your financial journey.
-              </div>
+            <div className="text-sm lg:text-base text-muted-foreground hidden sm:block">
+              Welcome back! Track your financial journey.
             </div>
           </div>
-        </div>
+        </header>
 
-
-        <main className="p-4 sm:p-6 lg:p-8 xl:p-10 max-w-7xl mx-auto">
+        {/* Page content */}
+        <main className="p-4 sm:p-6 lg:p-8 xl:p-10 max-w-7xl mx-auto w-full">
           <Outlet />
         </main>
       </div>
