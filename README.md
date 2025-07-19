@@ -36,18 +36,9 @@ Frontend: Next.js, React, shadcn/ui
 
 Charts: Recharts
 
-Backend: MongoDB (via API routes or external service)
-
 Design: Fully responsive with user-friendly error states
 
-📦 Installation
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/expensemanager.git
-cd expensemanager
-npm install
-npm run dev
+
 🌐 Live Demo
 [Visit Live App](https://expensemanager-seven.vercel.app/)
 
